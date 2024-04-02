@@ -1,0 +1,172 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+#header {
+    position: relative;
+    z-index: 1;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* clearfix 클래스를 가진 div에 그림자 효과 추가 */
+
+}
+
+
+.logobox {
+    margin-left: 20px;
+}
+
+.logobox img {
+    width: 150px;
+    height: auto;
+
+}
+#gnb {
+    margin-right: auto;
+    margin-left: auto; 
+    vertical-align: middle;
+
+}
+#gnb ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#gnb ul li {
+    display: inline-block;
+    position: relative;
+    margin-left: 20px;
+    margin-right: 30px;
+}
+
+#gnb ul li a {
+    display: block;
+    color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+    padding: 10px;
+}
+#gnb ul li:hover .submenu {
+    display: block;
+}
+
+#gnb ul li ul {
+    display: none;
+    position: absolute;
+    padding: 10px;
+}
+
+#gnb ul li:hover ul {
+    display: block;
+}
+
+#gnb ul li ul li {
+    display: block;
+    margin: 10px 0;
+}
+
+.lng_btn {
+    margin-left: auto; /* 이동 */
+    margin-right: 20px; /* 오른쪽 여백 */
+}
+
+.lng_btn a {
+    color: #333;
+    text-decoration: none;
+}
+
+.logobox,
+#gnb,
+.lng_btn {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 auto;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f9f9f9; /* 서브 메뉴 배경색 그레이 */
+    padding: 10px;
+    border: 1px solid #ccc;
+    z-index: 999; /* 메인 메뉴 위로 올리기 */
+}
+
+.submenu li {
+    margin-bottom: 5px;
+}
+
+.submenu a {
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+
+
+/*  main content */
+main {
+    padding: 20px;
+}
+
+.swiper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.swiper-wrapper {
+    display: flex;
+}
+
+.swiper-slide {
+    flex: 0 0 auto;
+}
+
+.swiper-slide img {
+    max-width: 100%;
+    height: auto;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+.swiper-button-prev a,
+.swiper-button-next a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.swiper-button-prev {
+    left: 10px;
+}
+
+.swiper-button-next {
+    right: 10px;
+}
