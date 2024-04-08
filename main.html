@@ -7,101 +7,294 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" id="viewPort" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>포스코1%나눔재단</title>
+
+    <script src="/resources/swiper-bundle.min.js"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+   
+
     <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
     <script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-Z3RQ15EYYY&amp;l=dataLayer&amp;cx=c"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-157259746-1"></script>
-    <script>
+    <link href="/css/main.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/poscoLogo.png">
+
+
+
+      <script src="/js/jquery-3.4.1.min.js"></script>
+      <script src="/js/ui.js"></script>
+      <script src="/js/sns.js"></script>
+      <script src="/js/jquery.bxslider.min.js"></script>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-157259746-1"></script>
+      <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
       
         gtag('config', 'UA-157259746-1');
       </script>
-    <link href="/css/main.css" rel="stylesheet" type="text/css">
-    <link rel="shortcut icon" type="image/x-icon" href="/images/poscoLogo.png">
+      <link href="/css/swiper-bundle.min.css" rel="stylesheet" type="text/css">
+      <link href="/css/common.css" rel="stylesheet" type="text/css">
+      <link href="/css/main.css" rel="stylesheet" type="text/css">
+
+      <style>
+      * {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 0 100px;
+}      </style>
 </head>
- <!-- 로고와 메뉴바 -->
-<!-- <div class="skip"><a href="#contents"><img src="./images/logo_footer.png" alt="logo" /></a></div> -->
-<header id="header">
-  <div class="clearfix">
-    <h1 class="logobox">
-      <a href="#contents"><img src="./images/logo_footer.png" alt="logo" /></a>
-    </h1>
-    <!-- 메뉴 -->
-    <nav id="gnb">
-      <ul class="gnb">
-        <li class="current selected">
-          <a href="#" class="pc_only">재단소개</a>
-          <ul>
-            <li><a href="#">비전·현황</a></li>
-            <li><a href="#">인사말</a></li>
-            <li><a href="#">이사회</a></li>
-            <li><a href="#">연혁</a></li>
-            <li><a href="#">오시는길</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#" class="pc_only">사업안내</a>
-          <ul>
-            <li><a href="#">취약계층 자립지원 사업</a></li>
-            <li><a href="#">미래세대 육성지원 사업</a></li>
-            <li><a href="#">기부자 참여 사업</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#" class="pc_only">재단소식</a>
-          <ul>
-            <li><a href="#">재단뉴스</a></li>
-            <li><a href="#">뉴스레터</a></li>
-            <li><a href="#">발간물</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#" class="pc_only">공지사항</a>
-          <ul>
-            <li><a href="#">공지사항</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-    <!-- //메뉴 -->
-    <div class="lng_btn">
-      <a href="#" title="영문 페이지"><img src="images/earth.png" style="width: 30px; height: 25px;" alt="English"></a>
-    </div>
-  </div>
-</header>
-
-<main>
-  <div class="swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <a href="#" style="display: block;" title="포스코1%나눔재단 10주년 기념백서 포스코1%나눔재단 공지사항 바로가기 ">
-          <img src="/images/gingi3.jpg" alt="1%의 나눔 10년의 동행 100%의 희망 한 걸음씩 나아간 3,650일의 여정 2023포스코1%나눔재단 10주년 기념백서 포스코1%나눔재단" class="pc">
-        </a>
-      </div>
-      <div class="swiper-slide">
-        <a href="#" style="display: block;" title="">
-          <img src="/images/gongi1.jpg" alt="" class="pc">
-        </a>
-      </div>
-      <div class="swiper-slide">
-        <a href="/front/word/contributor_list3.do" style="display: block;" title="">
-          <img src="/images/gongi2.jpg" alt="" class="pc">
-        </a>
-      </div>
-    </div>
-
-    <div class="swiper-button-prev"><a href="#" onclick="return false;">이전</a></div>
-    <div class="swiper-button-next"><a href="#" onclick="return false;">다음</a></div>
-  </div>
-</main>
-
-
-
 <body>
+  <!-- 메뉴바 -->
+  <header>
+    <div class="clearfix">
+      <h1 class="logobox">
+        <a href="#contents"><img src="./images/logo_footer.png" alt="logo" /></a>
+      </h1>
+      <!-- 메뉴 -->
+      <nav id="menu">
+        <ul class="menu">
+          <li class="current selected">
+            <a href="#">재단소개</a>
+            <ul>
+              <li><a href="#">비전·현황</a></li>
+              <li><a href="#">인사말</a></li>
+              <li><a href="#">이사회</a></li>
+              <li><a href="#">연혁</a></li>
+              <li><a href="#">오시는길</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">사업안내</a>
+            <ul>
+              <li><a href="#">취약계층 자립지원 사업</a></li>
+              <li><a href="#">미래세대 육성지원 사업</a></li>
+              <li><a href="#">기부자 참여 사업</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">재단소식</a>
+            <ul>
+              <li><a href="#">재단뉴스</a></li>
+              <li><a href="#">뉴스레터</a></li>
+              <li><a href="#">발간물</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">공지사항</a>
+            <ul>
+              <li><a href="#">공지사항</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- //메뉴 -->
+      <div class="lng_btn">
+        <a href="#" title="영문 페이지"><img src="images/earth.png" style="width: 30px; height: 25px;" alt="English"></a>
+      </div>
+    </div>
+  </header>
+  <!-- 공지사항 이미지 체인지 -->
+  <section id="contents" tabindex="-1">
+    <main>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <a href="#" style="display: block;" title="포스코1%나눔재단 10주년 기념백서 포스코1%나눔재단 공지사항 바로가기 ">
+              <img src="/images/gingi3.jpg" alt="1%의 나눔 10년의 동행 100%의 희망 한 걸음씩 나아간 3,650일의 여정 2023포스코1%나눔재단 10주년 기념백서 포스코1%나눔재단" class="pc">
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="#" style="display: block;" title="">
+              <img src="/images/gongi1.jpg" alt="">
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="#" style="display: block;" title="">
+              <img src="/images/gongi2.jpg" alt="">
+            </a>
+          </div>
+        </div>
+        <div class="swiper-button-prev"><a href="#" onclick="return false;">이전</a></div>
+        <div class="swiper-button-next"><a href="#" onclick="return false;">다음</a></div>
+      </div>
+    </main>
+    <!-- 재단 정보 -->
+    <section class="information_bg">
+      <div class="information">
+        <h2 class="information_title">재단정보</h2>
+        <img src="/images/information_img_01.png" alt="'따뜻한 마음이 모여 만드는 가능성의 이야기' 포스코1%나눔재단은 포스코그룹 및 협력사 임직원의 기부와 회사의 매칭그랜트로 운영되는 비영리재단입니다." class="infotm_img_01">
+        <div class="information_year">[2023년 기준]</div>
+        <div class="information_box">
+          <ul>
+            <li>
+              <img src="/images/imformation_icon_01.png" alt="">
+              <span class="line"></span>
+              <p>포스코그룹<br>임직원 참여율</p>
+              <span class="information_number" id="number_01">97</span>
+              <span class="some">%</span>
+            </li>
+            <li>
+              <img src="/images/imformation_icon_02.png" alt="">
+              <span class="line"></span>
+              <p>포스코그룹<br>참여인원</p>
+              <span class="information_number" id="number_02">38,516</span>
+              <span class="some">명</span>
+            </li>
+            <li>
+              <img src="/images/imformation_icon_03.png" alt="">
+              <span class="line"></span>
+              <p>기부금<br>누적현황(2013년~)</p>
+              <span class="information_number" id="number_03">958</span>
+              <span class="some">억원</span>
+            </li>
+            <li>
+              <img src="/images/imformation_icon_04.png" alt="">
+              <span class="line"></span>
+              <p>재단사업<br>참여자</p>
+              <span class="information_number" id="number_04">58,861</span>
+              <span class="some">명</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 뉴스레터 -->
+    <section class="story">
+      <div class="story_wrap">
+        <h2 class="story_title">뉴스레터</h2>
+        <div class="story_last">
+          <a href="#" title="뉴스레터 페이지로가기">지난호 보기</a>
+        </div>
+        <div class="story_tab">
+          <ul class="story_btn">
+            <li><a href="#" title="">1% 꿈</a></li>
+            <li><a href="#" title="">1% 힘</a></li>
+            <li><a href="#" title="">1% 칼럼</a></li>
+          </ul>
+          <div class="contentsWrap">
+            <div class="story01">
+              <div class="story_box">
+                <img src="/images/story_box_01.jpg" alt="">
+                <p>1% 꿈 <span class="story_dt">_ 희망을 키워가는 사람들</span></p>
+                <p>포스코휴먼스 입사 최선경 님의 이야기</p>
+                <a href="#" title="뉴스레터 1% 꿈 페이지로 가기">더 보기</a>
+              </div>
+            </div>    
+            <div class="story02">
+              <div class="story_box">
+                <img src="/images/story_box_02.jpg" alt="나눔은 삼부자(포스코 권순태, 권진만, 권두현), 부부(포스코퓨처엠 권영대, 이지현), 포스코 조장석 '풍요', '사랑', '더함' 입니다">
+                <p>1% 힘 <span class="story_dt">_ 세상을 바꾸는 사람들</span></p>
+                <p>나눔은 '풍요', '사랑', '더함' 입니다</p>
+                <a href="#" title="뉴스레터 1% 힘 페이지로 가기">더 보기</a>
+              </div>
+            </div>    
+            <div class="story03">
+              <div class="story_box">
+                <img src="/images/story_box_03.jpg" alt="">
+                <p>1% 칼럼</p>
+                <!-- <p>신비로운 바람, 꿈나라로 떠나요</p> -->
+                <a href="#" title="뉴스레터 1% 칼럼 페이지로 가기">더 보기</a>
+              </div>
+            </div>    
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 하단 -->
+    <footer id="footer">
+      <div class="clearfix">
+      <button type="button" class="jumpto_top"><span class="hidden">위로 가기</span></button>
+      <ul class="left horizontal">
+        <li><a href="#" class="import_popup">의견 보내기</a></li>
+        <li><a href="#" class="import_popup">개인정보처리방침</a></li>
+      </ul>
+        <aside class="right horizontal">
+          <ul class="sns horizontal">
+            <li><a title="새 창 열림" href="#" target="_blank" class="sns_youtube"><span class="hidden">포스코 유튜브</span></a></li>
+            <li><a title="새 창 열림" href="#" target="_blank" class="sns_instagram"><span class="hidden">포스코 인스타그램</span></a></li>
+            <li><a title="새 창 열림" href="#" target="_blank" class="sns_facebook"><span class="hidden">포스코 페이스북</span></a></li>
+            <li><a title="새 창 열림" href="#" target="_blank" class="sns_linkedin"><span class="hidden">링크드인</span></a></li>
+          </ul>
+          <button type="button" class="link_plus">관련 사이트</button>
+          <!-- 관련사이트 -->
+          <ul class="groups" style="display: none;">
+            <li><a title="새 창 열림" href="#" target="_blank">포스코 기업시민</a></li>
+            <li><a title="새 창 열림" href="#" target="_blank">포스코 홈페이지</a></li>
+            <li><a title="새 창 열림" href="#" target="_blank">문화체육관광부</a></li>
+            <li><a title="새 창 열림" href="#" target="_blank">국민신문고</a></li>
+            <li><a title="새 창 열림" href="#" target="_blank">국세청 홈페이지</a></li>
+          </ul>
+        </aside>
+      </div>
+      <section class="copyright">
+        <h1>
+          <img src="/images/logo_footer.png" alt="포스코 1% 나눔재단">
+        </h1>
+        <p>
+          서울시 강남구 테헤란로 440 포스코센터 동관 포스코1%나눔재단 E-Mail : nanum@poscofoundation.org  Tel : 02-3457-1002<br>COPYRIGHT(C)
+          2019 POSCO. ALL RIGHTS RESERVED.
+        </p>
+        <span>
+          <a href="#" title="새창" target="_blank">
+            <img src="/images/logo_accessibility_2023.png" alt="(사)한국장애인단체총연합회한국웹접근성인증평가원웹접근성우수사이트인증마크(WA인증마크)">
+          </a>
+        </span>
+      </section>
+    </footer>
+  </section>  
+
+  <script>
+  $(function(){
+  
+  /* main */
+  var swiper = new Swiper("main .swiper", {
+    navigation: {
+      nextEl: "main .swiper-button-next a",
+      prevEl: "main .swiper-button-prev a",
+    },
+    loop: true,
+    speed: 600,
+    effect: 'fade',
+    autoHeight : true,
+    spaceBetween: 30,
+     autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+  });
+  
+  });
+  </script>
+  
+  <script>
+  //story_tab
+  $(function(){
+    var btn = '.story_tab .story_btn a';
+    var contents = '.story_tab .contentsWrap > div';
+  
+    $(btn).first().attr('title', '선택됨').parents('li').addClass('active');
+    $(contents).first().fadeIn(0);
+   
+    $(btn).click(function(e){
+      
+      e.preventDefault();
     
+      $(btn).removeAttr('title').parents('li').removeClass('active'); 
+      $(this).attr('title', '선택됨').parents('li').addClass('active');
+  
+      var index = $(this).parents().index();
+    
+      $(contents).stop().fadeOut(0);
+      $(contents).eq(index).stop().fadeIn(0);
+    });
+  });
+    </script>	
+  </section>
 </body>
 </html>

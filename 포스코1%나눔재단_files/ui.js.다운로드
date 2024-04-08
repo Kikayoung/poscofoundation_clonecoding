@@ -1,0 +1,609 @@
+/* Start - Layout, 공통 */
+function layout() {
+    $('.gnb li li.current').each(function () {//2뎁스에 current 클래스 있을 때
+        $(this).parent('ul').parent('li').addClass('current selected');//상위뎁스 선택된 상태로 만든다
+    });
+
+    $('.gnb>li>a').mouseenter(function () {//와이드화면 메뉴 마우스오버하면
+        $('.gnb').addClass('show_all');//하위메뉴 전부 보인다
+        $('.gnb').mouseleave(function () {//마우스아웃하면
+            $('.gnb').removeClass('show_all');//하위메뉴 전부 숨긴다
+        });
+    }).focusin(function () {//포커스인하면
+        $('.gnb').addClass('show_all');//하위메뉴 전부 보인다
+        $('*:not(.gnb a)').focus(function () {//포커스아웃하면
+            $('.gnb').removeClass('show_all');//하위메뉴 전부 숨긴다
+        });
+    });
+
+    var lastScroll = 0;
+    $(window).on('scroll', function (event) {
+        if (!$('#gnb>button.mobile_only').is(':visible')) {//와이드 화면일 경우
+            if ($(this).scrollTop() > 80) {//80픽셀 밑으로 가면
+                $('#header').addClass('depth2_selected')//헤더 고정한다
+            } else {//80픽셀 위로 가면
+                $('#header').removeClass('depth2_selected');//헤더 고정 푼다
+            }
+        }
+    });
+
+    $('#gnb').on('click', 'button.ico_menu', function () {//모바일 메뉴 열기 버튼 클릭하면
+        $('#header').addClass('mobile_menu_selected');//연다
+        $('body').css('overflow', 'hidden');
+    });
+
+    $('#gnb').on('click', 'button.ico_close', function () {//모바일 메뉴 닫기 버튼 클릭하면
+        $('#header').removeClass('mobile_menu_selected');//닫는다
+        $('body').css('overflow', 'auto');
+    });
+
+    $('.gnb>li').on('click', 'button.mobile_only', function () {//모바일 GNB 1뎁스 클릭하면
+        if ($(this).parent('li').hasClass('selected')) {//열려있는 경우
+            $(this).attr('title', '하위메뉴 열기').siblings('ul').slideUp('fast').parent('li').removeClass('selected').siblings('.current').addClass('selected').children('ul').slideDown('fast');//닫는다
+        } else {//닫혀있는 경우
+            $(this).attr('title', '하위메뉴 닫기').siblings('ul').slideDown('fast').parent('li').addClass('selected').siblings('li').removeClass('selected').children('ul').slideUp('fast');//연다
+        }
+    });
+
+    $('.share').on('click', '.ico_share', function () {//공유하기 버튼 클릭하면
+        $(this).hide().siblings('.ico_close_thin').show()
+        $(this).siblings('ul').slideDown('fast');
+    });
+
+    $('.share').on('click', '.ico_close_thin', function () {//공유 닫기 버튼 클릭하면
+        $(this).hide().siblings('.ico_share').show()
+        $(this).siblings('.ico_share').focus(); // 초점 처리 스크립트 1줄 추가
+        $(this).siblings('ul').slideUp('fast');
+    });
+
+    $('#footer').on('click', '.link_plus', function () {//국내그룹사 바로가기 버튼 클릭하면
+        if ($(this).siblings('.groups').is(':visible')) {//국내그룹사 레이어 보이는 상태일 경우
+            $(this).focus().siblings('.groups').hide();//닫기
+        } else {//국내그룹사 레이어 숨겨진 상태일 경우
+            $(this).siblings('.groups').show().find('li:first-child a').focus();//열기
+        }
+        //$(this).siblings('.groups').toggle();//국내그룹사 레이어 토글
+    });
+
+    $('#footer').on('click', '.jumpto_top', function () {//위로가기 버튼 클릭하면
+        $('body,html').scrollTop(0);
+        $('#contents').focus();
+    });
+}
+
+/* End - Layout, 공통 */
+
+/* Start - Url 복사 */
+function CopyUrlToClipboard() {
+    var obShareUrl = document.getElementById("share_url");
+    obShareUrl.value = window.document.location.href;  // 현재 URL 세팅
+    obShareUrl.select();// 해당 값 선택
+    obShareUrl.setSelectionRange(0, 9999);  // 추가
+    document.execCommand("copy"); // 클립보드에 복사
+    alert("URL이 클립보드에 복사되었습니다");
+}
+
+function copyURLToClipboard(url, seq) {
+    if (!seq) seq = '';
+    url = $(location).attr('href');
+    var IE = (document.all) ? true : false;
+
+    if (seq) {
+        url = url + "?seq=" + seq;
+    }
+    // 현재 페이지의 URL 가져오기
+    //var currentURL = window.location.href;
+
+    document.getElementById("share_url").value = url;
+    var copyText = document.getElementById("share_url");
+    copyText.select();
+    document.execCommand("copy");
+    alert("URL이 클립보드에 복사되었습니다");
+}
+
+/* End - Url 복사 */
+
+/* Start - 탭 */
+function tab() {
+    function tabWidth() {
+        var totalTabWidth = 0;
+        $('nav.tab').each(function () {
+            $(this).find('li').each(function () {
+                totalTabWidth += $(this).outerWidth(true);
+            });
+            $(this).find('ul').width(totalTabWidth + 15);
+        });
+    }
+
+    tabWidth();
+    $(window).resize(function () {//리사이즈 시
+        tabWidth();
+    });
+
+    $('.tab').on('click', 'li>*', function () {//탭 버튼 클릭하면
+        $(this).parent('li').addClass('selected').children().append('<span class="hidden">선택됨</span>');//selected 상태로 변경하고
+        $('.title_tab').text('' + $(this).clone().children().remove().end().text() + ' 리스트');
+        $(this).parent('li').siblings('li').removeClass('selected').find('span.hidden').remove();//형제는 selected 해제한다
+    });
+}
+
+/* End - 탭 */
+
+/* Start - 문화예술,미래세대,다문화가정,장애인생활지원 탭 */
+function tab() {
+
+    $('.tab_artW,.tab_art,.tab_fu,.tab_mu,.tab_di,.tab_etc,.tab_tog').on('click', 'li>*', function () {//탭 버튼 클릭하면
+        $(this).parent('li').addClass('selected').children().append('<span class="hidden">선택됨</span>');//selected 상태로 변경하고
+        $('.title_tab').text('' + $(this).clone().children().remove().end().text() + ' 리스트');
+        $(this).parent('li').siblings('li').removeClass('selected').find('span.hidden').remove();//형제는 selected 해제한다
+    });
+
+}
+
+/* End - 문화예술,미래세대,다문화가정,장애인생활지원 탭 */
+
+
+/* Start - 뉴스 ui */
+function news() {
+    function newsHeight() {
+        $('.news li').each(function () {
+            var liHeight = parseInt($(this).outerHeight());
+            var categoryHeight = parseInt($(this).find('.box_category').outerHeight()) + parseInt($(this).find('.box_category').css('margin-top')) + parseInt($(this).find('.box_category').css('margin-bottom'));
+            var titleHeight = parseInt($(this).find('.txt_title').outerHeight()) + parseInt($(this).find('.txt_title').css('margin-bottom')) * 2;
+            var dateHeight = parseInt($(this).find('.txt_date').outerHeight()) + parseInt($(this).find('.txt_date').css('bottom'));
+            var pHeight = liHeight - categoryHeight - titleHeight - dateHeight;
+            var conlineHeight = parseInt($(this).find('p').css('line-height'));
+            var conHeight = Math.floor(pHeight / conlineHeight) * conlineHeight + 1;
+            $(this).find('p').css('height', conHeight);
+        });
+        $('.news li:not(.case) .img').each(function () {
+            var newsTitle = $(this).siblings('.txt_title');
+            $(newsTitle).contents().wrap('<span/>')
+            if ($(newsTitle).children('span').outerHeight() > parseInt($(newsTitle).outerHeight()) + 10) {
+                var lastLetter = $(newsTitle).text().trim().slice(-1);
+                $(newsTitle).addClass('long');
+            }
+        });
+    }
+
+    newsHeight();
+    $(window).resize(function () {//리사이즈 시
+        newsHeight();
+    });
+}
+
+/* End - 뉴스 ui */
+
+/* Start - 레이어팝업 */
+function importPopup() {
+    var focus_el;
+    $('.import_popup').on('click', function () {//팝업 부르는 버튼 클릭하면
+        var target = $(this).attr('href');
+        focus_el = $(this);
+        $('' + target + '').show().find('h1').focus();//팝업 보인다
+        $('body,html').css('overflow', 'hidden');
+        return false;
+    });
+    $('.popup .ico_close,.close_popup').on('click', function () {
+        $(this).closest('.popup').hide();
+        $('body,html').css('overflow', 'auto');
+        focus_el.focus();
+    });
+
+    $('.popup #contactusCloseBtn').on('click', function () {
+        $(this).closest('.popup').hide();
+        $('body,html').css('overflow', 'auto');
+        focus_el.focus();
+    });
+}
+
+/* End - 레이어팝업 */
+
+/* Start - Form */
+function form() {
+    $('.has_clear').each(function () {
+        var $this = $(this),
+            $targetInput = $(this).children('input');
+        if ($targetInput.val()) {
+            $this.addClass('on');
+        }
+        $targetInput.keyup(function () {
+            if ($(this).val()) {
+                $this.addClass('on');
+            } else {
+                $this.removeClass('on');
+            }
+        });
+        $this.on('click', 'button', function () {
+            $targetInput.val('').parent('.has_clear').removeClass('on');
+        });
+    });
+}
+
+/* End - Form */
+
+/* Start - Process */
+function process() {
+    $('ol.process').each(function () {
+        $(this).parent('dd').addClass('process_wrap');
+        if ($(this).hasClass('case_child')) {
+            $(this).parent('dd').addClass('case_child');
+        }
+        $(this).wrap('<div></div>');
+    });
+}
+
+/* End - Process */
+
+/* Start - 도큐먼트 로딩 시 */
+$(function () {
+    layout();
+    tab();
+    form();
+    process();
+    importPopup();
+});
+/* End - 도큐먼트 로딩 시 */
+
+
+/* Start -  문화 탭 */
+$(document).ready(function () {
+    var $buttonTab = $('#menuTab p'),
+        $tabCon = $('.in_contents'),
+        $in_menuTab_wrapelect = $('#menuTab_navi'),
+        activeClass = 'is-active';
+
+    $buttonTab.eq(4).addClass(activeClass);
+    $tabCon.not(':first').hide();
+
+    // Btn
+    $buttonTab.find('a').on('click', function (e) {
+        var target = $(this).attr('href');
+
+        $buttonTab.removeClass(activeClass);
+        $(this).parent().addClass(activeClass);
+        $in_menuTab_wrapelect.val(target);
+        $tabCon.hide();
+        $(target).show();
+        e.preventDefault();
+    });
+
+    // Select
+    $in_menuTab_wrapelect.on('change', function () {
+        var target = $(this).val(),
+            targetSelectNum = $(this).prop('selectedIndex');
+
+        $buttonTab.removeClass(activeClass);
+        $buttonTab.eq(targetSelectNum).addClass(activeClass);
+        $tabCon.hide();
+        $(target).show();
+    });
+});
+
+
+/* 클릭 */
+$(document).ready(function () {
+    var $buttonTab = $('.menuTab_g li'),
+        $buttonTabm = $('.horizontal li button'),
+        $tabCon = $('.in_contents'),
+        $in_menuTab_wrapelect = $('#menuTab_navi'),
+        activeClass = 'is-active';
+
+    $buttonTab.first().addClass(activeClass);
+    $tabCon.not(':first').hide();
+
+    // Btn
+    $buttonTab.find('a').on('click', function (e) {
+        var target = $(this).attr('href');
+
+        $buttonTab.removeClass(activeClass);
+        $(this).parent().addClass(activeClass);
+        $in_menuTab_wrapelect.val(target);
+        $tabCon.hide();
+        $(target).show();
+        e.preventDefault();
+    });
+
+    $buttonTabm.on('click', function (e) {
+
+        var fftab = $('.tabF01'),
+            ddtab = $('.tabD01'),
+            fftabIn = $('.tabF01_o');
+
+        $(ddtab).removeClass(activeClass);
+        $(fftab).addClass(activeClass);
+        $(fftabIn).show();
+        e.preventDefault();
+
+    });
+
+
+    /* 그룹사 지정사업 */
+    $(document).ready(function () {
+        var $buttonTab = $('#gMenuTab p'),
+            $gTabCon = $('.g_in_contents'),
+            activeClass = 'is-active-g';
+
+        $buttonTab.eq(0).addClass(activeClass);
+        $buttonTab.eq(0).find('a').attr('title', '선택됨');
+        $gTabCon.not(':first').hide();
+
+        // Btn
+        $buttonTab.find('a').on('click', function (e) {
+            var target = $(this).attr('href');
+
+            $buttonTab.removeClass(activeClass);
+            $buttonTab.find('a').removeAttr('title');
+            $(this).parent().addClass(activeClass);
+            $(this).attr('title', '선택됨');
+            $gTabCon.hide();
+            $(target).show();
+            e.preventDefault();
+        });
+
+    });
+
+
+    /* tabNlist - 하단탭 */
+    $(document).ready(function () {
+        var $buttonTab = $('.tabNlist');
+
+        $buttonTab.eq(0).find('.first').attr('title', '선택됨');
+
+        // Btn
+        $buttonTab.find('a').on('click', function (e) {
+            $buttonTab.find('a').removeAttr('title');
+            $(this).attr('title', '선택됨');
+            e.preventDefault();
+        });
+
+    });
+    /** tab **/
+
+
+    $(".dsme_tab").each(function () {
+        $(this).find("a").wrapInner("<span>").each(function () {
+            $(this).children().css({
+                "width": $(this).innerWidth(),
+                "height": $(this).innerHeight()
+            });
+        });
+    });
+
+
+    if ($(".toggleTab").length > 0) {
+        $(".tab-contents").eq(0).siblings(".tab-contents").hide();
+        $(".toggleTab a").each(function () {
+            $(this).on("click", function () {
+                $(this).addClass("on").siblings().removeClass();
+
+                $($(this).attr("href")).show().siblings(".tab-contents").hide();
+                return false;
+            });
+        });
+    }
+
+
+    $(".mArt_tab_in").each(function () {
+        $(this).find(">a").wrapInner("<span>").each(function () {
+            $(this).children().css({
+                "width": $(this).innerWidth(),
+                "height": $(this).innerHeight()
+            });
+        });
+    });
+    /*  */
+    if ($(".toggleTab2").length > 0) {
+        $(".tab-con_sub").eq(0).siblings(".tab-con_sub").hide();
+
+
+        $(".toggleTab2 a").each(function () {
+            $(this).on("click", function () {
+                var years = $('.toggleTab2 a span');
+
+                var browserTitle = '포스코 1% 나눔재단 < 만남이 예술이 되다 < 비디오갤러리 : ' + $(this).text() + '',
+                    $targetContent = $('#' + $(this).data('role') + '');
+                $('head title').text(browserTitle);//브라우저 타이틀 변경
+
+                $(this).addClass("on").siblings().removeClass();
+                $($(this).attr("href")).show().siblings(".tab-con_sub").hide();
+                return false;
+            });
+        });
+    }
+    /*  */
+    $(".mArt_tab_M").each(function () {
+        $(this).find(">a").wrapInner("<span>").each(function () {
+            $(this).children().css({
+                "width": $(this).innerWidth(),
+                "height": $(this).innerHeight()
+            });
+        });
+    });
+
+    if ($(".toggleTab2M").length > 0) {
+        $(".tab-con_sub").eq(1).siblings(".tab-con_sub").hide();
+        $(".toggleTab2M a").each(function () {
+            $(this).on("click", function () {
+                $(this).addClass("on").siblings().removeClass();
+                $($(this).attr("href")).show().siblings(".tab-con_sub").hide();
+                $('button.crBtn').addClass('on');
+                $('button.stBtn').removeClass('on');
+                $('.vBox_co').css('display', 'block');
+                $('.vBox_st').css('display', 'none');
+                return false;
+            });
+        });
+    }
+
+    $(document).ready(function () {
+        $(window).resize(function () {
+            var height = window.outerWidth;
+            if (height >= 960) {
+                $('.vBox_co').css('display', 'block');
+                $('.vBox_st').css('display', 'block');
+            }
+        })
+    });
+
+
+    $(".close").on('click', function () {
+
+        var $popupReset = $('.l_vodB');
+
+        $popupReset.html("");
+
+        $("#lpop_vBox,#lpop_vBox2").fadeOut(300);
+        $(".lpop_con").fadeOut(300);
+        $('.modal-open').focus();
+    });
+
+    $(".close2").on('click', function () {
+        $('.modal-open2').focus();
+    });
+
+});
+
+
+$(document).ready(function () {
+    var $buttonTab = $('.menuTab_g li'),
+        $buttonTabm = $('.horizontal li button'),
+        $tabCon = $('.in_contents'),
+        $in_menuTab_wrapelect = $('#menuTab_navi'),
+        activeClass = 'is-active';
+
+    $buttonTab.first().addClass(activeClass);
+    $tabCon.not(':first').hide();
+
+    // Btn
+    $buttonTab.find('a').on('click', function (e) {
+        var target = $(this).attr('href');
+
+        $buttonTab.removeClass(activeClass);
+        $(this).parent().addClass(activeClass);
+        $in_menuTab_wrapelect.val(target);
+        $tabCon.hide();
+        $(target).show();
+        e.preventDefault();
+    });
+
+    $buttonTabm.on('click', function (e) {
+
+        var fftab = $('.tabF01'),
+            ddtab = $('.tabD01'),
+            fftabIn = $('.tabF01_o');
+
+        $(ddtab).removeClass(activeClass);
+        $(fftab).addClass(activeClass);
+        $(fftabIn).show();
+        e.preventDefault();
+
+    });
+});
+
+function openModal(modalname) {
+    document.get
+    $("#lpop_vBox,#lpop_vBox2").fadeIn(300);
+    $("." + modalname).fadeIn(300);
+
+    var $this = $("." + modalname);
+
+    var $title = $this.find('.l_vodT dt').text();
+
+    // youtube id
+    var $popupUrl = $('.l_vodB');
+    var $ytId = $("." + modalname).attr("data-id");
+
+    $popupUrl.html('<iframe id="u_video" width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/' + $ytId + '?rel=0&autoplay=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="' + $title + '"></iframe>');
+
+    //pop 초점 이동
+    $(".lpop_con").attr("tabindex", "0");
+    $(".lpop_con").focus();
+}
+
+
+//tabBox
+$(function () {
+    var btn = '.tabBox .tabBox_btn a';
+    var contents = '.tabBox .contentsWrap > div';
+    var outlink = '.box_link .outL';
+
+    $(btn).first().addClass('active');
+    $(contents).first().fadeIn(0);
+    $(btn).first().attr('title', '선택됨');
+    $(outlink).attr('title', '성과보고서 새 창 열림');
+
+    $(btn).click(function (e) {
+        e.preventDefault();
+
+        $(btn).removeClass('active');
+        $(btn).removeAttr('title');
+        $(this).addClass('active');
+        $(this).attr('title', '선택됨');
+
+        var index = $(this).parents().index();
+
+        $(contents).stop().fadeOut(0);
+        $(contents).eq(index).stop().fadeIn(0);
+
+
+    });
+});
+
+$(function () {
+    $('.blog dd.vod .images').on('click', 'button', function () {
+        var vodTarget = $(this).data('role');
+        $('.vod_original video').trigger('pause');
+        $('.' + vodTarget + '').show().siblings('video').hide();
+    });
+    /*
+    $('.tab li').on('click','button',function(){//탭 버튼 클릭하면
+        var browserTitle = '기부자지정사업 : '+$(this).text()+'',
+        $targetContent = $('#'+$(this).data('role')+'');
+        $('head title').text(browserTitle);//브라우저 타이틀 변경
+        $targetContent.show().siblings('.tab_content').hide();//해당 컨텐츠 show
+    });
+    */
+    $('.tab_artW li').on('click', 'button', function () {//탭 버튼 클릭하면
+        var browserTitle = '취약계층 자립지원 사업 : ' + $(this).text() + '',
+            $targetContent = $('#' + $(this).data('role') + '');
+        $('head title').text(browserTitle);//브라우저 타이틀 변경
+        $targetContent.show().siblings('.tab_content_artW').hide();//해당 컨텐츠 show
+    });
+
+    $('.tab_art li').on('click', 'button', function () {//탭 버튼 클릭하면
+        var browserTitle = '문화ㆍ예술지원 : ' + $(this).text() + '',
+            $targetContent = $('#' + $(this).data('role') + '');
+        $('head title').text(browserTitle);//브라우저 타이틀 변경
+        $targetContent.show().siblings('.tab_content_art').hide();//해당 컨텐츠 show
+    });
+
+    $('.tab_fu li').on('click', 'button', function () {//탭 버튼 클릭하면
+        var browserTitle = '미래세대 지원 사업 : ' + $(this).text() + '',
+            $targetContent = $('#' + $(this).data('role') + '');
+        $('head title').text(browserTitle);//브라우저 타이틀 변경
+        $targetContent.show().siblings('.tab_content_fu').hide();//해당 컨텐츠 show
+    });
+
+    $('.tab_mu li').on('click', 'button', function () {//탭 버튼 클릭하면
+        var browserTitle = '다문화가정 자립지원 : ' + $(this).text() + '',
+            $targetContent = $('#' + $(this).data('role') + '');
+        $('head title').text(browserTitle);//브라우저 타이틀 변경
+        $targetContent.show().siblings('.tab_content_mu').hide();//해당 컨텐츠 show
+    });
+
+    $('.tab_di li').on('click', 'button', function () {//탭 버튼 클릭하면
+        var browserTitle = '취약계층 자립지원 사업 : ' + $(this).text() + '',
+            $targetContent = $('#' + $(this).data('role') + '');
+        $('head title').text(browserTitle);//브라우저 타이틀 변경
+        $targetContent.show().siblings('.tab_content_di').hide();//해당 컨텐츠 show
+    });
+
+    $('.tab_etc li').on('click', 'button', function () {//탭 버튼 클릭하면
+        var browserTitle = '기타소외계층지원 : ' + $(this).text() + '',
+            $targetContent = $('#' + $(this).data('role') + '');
+        $('head title').text(browserTitle);//브라우저 타이틀 변경
+        $targetContent.show().siblings('.tab_content_etc').hide();//해당 컨텐츠 show
+    });
+
+});
