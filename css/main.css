@@ -505,16 +505,13 @@ section {
 .copyright{
     margin: auto 100px;
 }
-
-/* 의견 보내기와 개인정보 처리 방침을 나란히 정렬 */
 #footer .left.horizontal {
     display: flex;
     justify-content: left;
-    align-items: center; /* 세로 중앙 정렬 */
+    align-items: center; 
 }
 #footer .left.horizontal p {
     margin: 0 20px; 
-    /* 왼쪽과 오른쪽에 10px 여백 추가 */
     color: white;
 }
 
