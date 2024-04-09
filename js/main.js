@@ -17,23 +17,19 @@ document.addEventListener('DOMContentLoaded', function() {
       
 });
     
-  $(function(){
-    var btn = '.story_tab .story_btn a';
-    var contents = '.story_tab .contentsWrap > div';
-  
-    $(btn).first().attr('title', '선택됨').parents('li').addClass('active');
-    $(contents).first().fadeIn(0);
-   
-    $(btn).click(function(e){
-      
-      e.preventDefault();
-    
-      $(btn).removeAttr('title').parents('li').removeClass('active'); 
-      $(this).attr('title', '선택됨').parents('li').addClass('active');
-  
-      var index = $(this).parents().index();
-    
-      $(contents).stop().fadeOut(0);
-      $(contents).eq(index).stop().fadeIn(0);
-    });
+document.addEventListener('DOMContentLoaded', function() {
+  var linkPlusBtn = document.querySelector('.link_plus');
+  var groupsList = document.querySelector('.groups');
+
+  // 관련 사이트 버튼 클릭 이벤트
+  linkPlusBtn.addEventListener('click', function() {
+      // 현재 상태에 따라 토글
+      if (groupsList.style.display === 'none') {
+          groupsList.style.display = 'block';
+          linkPlusBtn.textContent = '관련 사이트 ▲'; // 버튼 텍스트 변경
+      } else {
+          groupsList.style.display = 'none';
+          linkPlusBtn.textContent = '관련 사이트 ▼'; // 버튼 텍스트 변경
+      }
   });
+});

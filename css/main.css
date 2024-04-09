@@ -265,15 +265,12 @@ main .mainTexts{
     letter-spacing: -0.05rem;
 }
 
-
-
 /* 재단정보 */
 
 .information_bg {
-    display: flex;
+    display:flex;
     justify-content: center;
     width: 100%;
-    height: auto;
     background-color: #f2f4f7;
 }
 
@@ -288,7 +285,9 @@ section {
 
 .information .information_title,
 .story .story_title {
-    font-size: 2rem;
+    font-size: 50px;
+    margin-bottom: 50px;
+    font-weight: bold;
 }
 
 .information .information_year {
@@ -298,104 +297,245 @@ section {
     padding-bottom: 3%;
 }
 
+.line {
+    margin-top: 20px;
+    display: block; /* 선이 보이도록 함 */
+    width: 20%; 
+    height: 2px; 
+    background-color: black;
+}
+.information .infotm_img_01 {
+    display: block; 
+    margin: 20px auto; 
+}
+
+
 .information .information_box > ul > li p {
-    font-size: 16px;
+    margin: 10px 0;
+    font-size: 20px;
     line-height: 1;
     white-space: nowrap;
     overflow: hidden; 
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;
+    color: rgb(12, 12, 210); 
+    text-align: center;
+    line-height: 1.5;
 }
 
-
-
-
-/* 뉴스레터 */
-.story_wrap {
-    margin: 0 auto;
-    padding: 0 20px;
-    max-width: 1200px;
-    width: 100%;
-}
-
-.story {
-    background-size: cover;
-}
-
-.story .story_title {
-    color: #fff;
-}
-
-.story .story_last {
-    position: relative;
-    margin-top: 8%;
-}
-
-.story_tab {
-    flex-wrap: wrap;
-    margin-top: 30px;
-}
-
-.story_tab .story_btn {
-    display: flex;
-    justify-content: space-between;
-    padding-right: 0;
-    margin-bottom: 5%;
-    width: 100%;
-}
-
-.story_tab .story_btn a {
-    font-size: 1.3333rem;
-    font-weight: 500;
-}
-
-.story_tab .story_btn li {
-    width: 33.333%;
-    margin-top: 0;
-    border-radius: 0;
-    height: 50px;
-    line-height: 50px;
-}
-
-.story_tab .story_btn li.active {
-    border: 2px solid #fff;
-    line-height: 46px;
-}
-
-.story_tab .contentsWrap .story_box p:first-of-type {
-    font-size: 1.5385rem;
-    padding-left: 20px;
-    margin: 30px 0 10px;
-}
-
-.story_tab .contentsWrap .story_box p:first-of-type::before {
-    top: 4px;
-    width: 15px;
-    height: 15px;
-    background-size: contain;
-}
-
-.story_tab .contentsWrap .story_box p:first-of-type .story_dt {
-    font-size: 1rem;
-}
-
-.story_tab .contentsWrap .story_box a {
-    width: 100%;
-    margin-top: 5%;
-}
 .information .information_box > ul {
     display: flex;
     justify-content: center; 
+    font-weight: bold;
 }
 
 .information .information_box > ul> li {
     width: 250px; 
     height: 400px;
     margin: 0 10px;
-    padding: 10px;
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 20px;
     display: flex; 
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
+.information p,
+.information_number {
+    display: inline;
+}
+
+.information_number {
+    font-size: 30px;
+    font-weight: bold; 
+    display: inline-block; 
+    /* 줄바꿈 방지 어떻게?? : 안 먹힌다. */
+    white-space: nowrap;
+}
+
+
+
+/* 뉴스레터 */
+
+.story {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    
+    
+}
+.story_last a{
+    display: inline-block;
+    border-radius: 20px; 
+    background-color: #007bff; 
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff; 
+    margin-left: auto; 
+}
+.story_last {
+    padding-right: 0;
+
+}
+
+
+
+/* 푸터 스타일 */
+#footer {
+    padding: 40px ;
+}
+
+#footer .clearfix {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+#footer .left,
+#footer .right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#footer .left {
+    margin-right: 20px;
+}
+
+#footer .right {
+    position: relative;
+}
+
+#footer .right .sns {
+    margin-bottom: 10px;
+}
+
+#footer .right .sns li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#footer .right .sns li:last-child {
+    margin-right: 0;
+}
+
+#footer .right .link_plus {
+    display: block;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+#footer .groups {
+    position: absolute;
+    top: 30px;
+    right: -10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: none;
+}
+
+#footer .groups a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+#footer .groups a:hover {
+    text-decoration: underline;
+}
+
+#footer .groups:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #ccc transparent;
+}
+
+#footer .jumpto_top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #505050;
+    color: #fff;
+    font-size: 24px;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 999;
+}
+
+#footer .jumpto_top:hover {
+    background: #333;
+}
+
+#footer .back {
+    padding-top: 20px;
+    background-color: #1b2f49; 
+}
+/* 앵커 스타일 */
+#footer a {
+    text-decoration: none;
+    color: #fff; 
+}
+
+/* 관련 사이트 스타일 */
+#footer .groups {
+    display: none; 
+}
+
+#footer .copyright p,
+#footer .copyright span {
+    display: block;
+    color: black; 
+}
+
+#footer .copyright span {
+    margin-top: 20px; 
+}
+.copyright{
+    margin: auto 100px;
+}
+
+/* 의견 보내기와 개인정보 처리 방침을 나란히 정렬 */
+#footer .left.horizontal {
+    display: flex;
+    justify-content: left;
+    align-items: center; /* 세로 중앙 정렬 */
+}
+#footer .left.horizontal p {
+    margin: 0 20px; 
+    /* 왼쪽과 오른쪽에 10px 여백 추가 */
+    color: white;
+}
+
+#footer .righthorizontal {
+    text-align: right;
+}
+.copyright {
+    display: flex;
+    align-items: center;
+  }
+  
+  .copyright h1 {
+    margin: 0;
+  }
+  
+  .copyright p {
+    margin: 0;
+    flex-grow: 1;
+  }
+  
+  .copyright span {
+    margin-left: auto;
+  }
+  
